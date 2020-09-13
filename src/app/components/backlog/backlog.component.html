@@ -1,0 +1,35 @@
+<div class="content" role="main">
+  <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+    <mat-expansion-panel hideToggle class="example-box" *ngFor="let sprint of sprints" cdkDrag>
+      <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+      <mat-expansion-panel-header class="full-width">
+        <mat-panel-title>
+          {{sprint.titulo}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <mat-form-field class="full-width">
+        <mat-label>Favorite food</mat-label>
+        <input matInput placeholder="Ex. Pizza" [(ngModel)]="sprint.titulo">
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Descripción</mat-label>
+        <textarea matInput placeholder="Ex. It makes me feel...">{{sprint.descripcion}}</textarea>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Importancia</mat-label>
+        <mat-select [(value)]="sprint.importancia">
+          <mat-option *ngFor="let importancia of importancias" [value]="importancia.valor">
+            {{importancia.descripcion}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+    </mat-expansion-panel>
+    <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)" (click)="addElement()">
+      <div class="add-element">
+        <mat-icon aria-hidden="false" aria-label="Example home icon">add</mat-icon>
+        <mat-label>Agregar otro elemento</mat-label>
+      </div>
+    </div>
+  </div>
+</div>
